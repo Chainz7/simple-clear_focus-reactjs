@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 :root {
   --clr-primary: #080a1e;
   --clr-gray-form: #ebebf5;
@@ -15,7 +15,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid black; */
 }
 
 html {
@@ -60,6 +59,14 @@ select option {
     transform: translateX(0);
   }
 }
+@keyframes slideInLeftSpecial {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 @keyframes slideInRight {
   from {
     transform: translateX(300px);
@@ -99,7 +106,6 @@ select option {
   margin-top: 8rem;
   position: absolute;
   z-index: -1;
-  animation: slideInDownSpecial 2.5s ease;
 }
 
 /* NAVBAR */
@@ -204,7 +210,7 @@ select option {
 .text-1 {
   font-size: 3.4rem;
   font-weight: 600;
-  animation: slideInLeft 1.8s ease;
+  animation: slideInLeftSpecial 2.3s ease;
 }
 
 .text-2 {
@@ -217,7 +223,7 @@ select option {
   border-radius: 3rem;
   font-size: 3.4rem;
   font-weight: 500;
-  animation: slideInLeft 1.5s ease;
+  animation: slideInLeftSpecial 2s ease;
 }
 
 .text-3 {
@@ -231,7 +237,7 @@ select option {
   border-radius: 3rem;
   font-size: 3.4rem;
   font-weight: 500;
-  animation: slideInLeft 1.2s ease;
+  animation: slideInLeftSpecial 1.7s ease;
 }
 
 .theme-box {

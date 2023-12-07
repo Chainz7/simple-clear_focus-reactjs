@@ -19,7 +19,7 @@ import Line from "./design/Line 3.png";
 export default function App() {
   return (
     <div className="app">
-      <img src={BG} alt="" className="background" />
+      <img src={BG} alt="" className="background opacity" />
       <Navbar />
       <div className="main">
         <div className="left">
@@ -448,7 +448,7 @@ function LeftItem() {
 
 function RightSort() {
   return (
-    <div className="box-right special">
+    <div className="box-right special opacity">
       <div className="sort-header">
         <div className="theme-left-title lol">
           <div className="sort-big">Clear</div>
@@ -457,7 +457,7 @@ function RightSort() {
         <span className="sort-small right-slow">SORT BY :</span>
       </div>
       <div className="sort-footer">
-        <button className="theme-left-title2 sort-small btn-color right-fast">
+        <button className="theme-left-title2 sort-small btn-color right-fast anim">
           INPUT ORDER
         </button>
         <button className="theme-left-title2 sort-small btn-white right-normal">
