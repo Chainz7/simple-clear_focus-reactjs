@@ -35,6 +35,56 @@ select option {
   color: var(--clr-white-box);
 }
 
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideInTop {
+  from {
+    transform: translateY(-90px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(300px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInDown {
+  from {
+    transform: translateY(300px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slideInDownSpecial {
+  from {
+    transform: translateY(800px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .app {
   width: 100%;
   height: 100vh;
@@ -49,6 +99,7 @@ select option {
   margin-top: 8rem;
   position: absolute;
   z-index: -1;
+  animation: slideInDownSpecial 2.5s ease;
 }
 
 /* NAVBAR */
@@ -63,6 +114,7 @@ select option {
 
 .add-logo {
   height: 20px;
+  animation: slideInTop 1s ease;
 }
 
 .add-form {
@@ -83,6 +135,7 @@ select option {
   cursor: pointer;
   z-index: 99;
   transition: all 0.3s ease;
+  animation: slideInTop 1.5s ease-out;
 }
 
 .add-form button:hover {
@@ -103,6 +156,7 @@ select option {
   border-radius: 3rem;
   background-color: var(--clr-gray-form);
   color: var(--clr-primary);
+  animation: slideInTop 1s ease;
 }
 
 .add-input input {
@@ -150,6 +204,7 @@ select option {
 .text-1 {
   font-size: 3.4rem;
   font-weight: 600;
+  animation: slideInLeft 1.8s ease;
 }
 
 .text-2 {
@@ -162,6 +217,7 @@ select option {
   border-radius: 3rem;
   font-size: 3.4rem;
   font-weight: 500;
+  animation: slideInLeft 1.5s ease;
 }
 
 .text-3 {
@@ -175,6 +231,7 @@ select option {
   border-radius: 3rem;
   font-size: 3.4rem;
   font-weight: 500;
+  animation: slideInLeft 1.2s ease;
 }
 
 .theme-box {
@@ -202,6 +259,18 @@ select option {
   border-radius: 4rem;
   background-color: var(--clr-gray-box);
   backdrop-filter: var(--flt-blur);
+}
+
+.opacity {
+  animation: opacity 1.5s ease-in;
+}
+
+.phase1 {
+  animation: slideInDown 1.4s ease;
+}
+
+.phase2 {
+  animation: slideInDown 1.8s ease;
 }
 
 .box-items {
@@ -284,8 +353,13 @@ select option {
   gap: 0.8rem;
 }
 
+.animetleft {
+  animation: slideInLeft 1.2s ease;
+}
+
 .lol {
   margin-top: 1rem;
+  animation: slideInRight 1s ease;
 }
 
 .theme-left-title span {
@@ -473,7 +547,6 @@ select option {
 }
 
 .sort-clear {
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -481,6 +554,7 @@ select option {
 }
 
 .sort-clear button {
+  margin-top: 3rem;
   padding: 1.4rem 1.6rem;
   display: flex;
   flex-direction: row;
@@ -514,6 +588,16 @@ select option {
   align-items: center;
   border-radius: 3rem;
   background-color: var(--clr-primary);
+}
+
+.right-slow {
+  animation: slideInRight 1.5s ease;
+}
+.right-normal {
+  animation: slideInRight 1.2s ease;
+}
+.right-fast {
+  animation: slideInRight 1s ease;
 }
 
 .progress-bar {

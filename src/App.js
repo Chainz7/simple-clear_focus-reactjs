@@ -69,7 +69,8 @@ function LeftTheme() {
   return (
     <div className="theme-box">
       <div className="theme-left">
-        <div className="box-box">
+        {/* Activated when you already done the project */}
+        {/* <div className="box-box opacity">
           <div className="box-items">
             <label className="box-item">
               <input type="checkbox" />
@@ -86,14 +87,14 @@ function LeftTheme() {
               </button>
             </div>
           </div>
-        </div>
-        <div className="theme-left-title">
+        </div> */}
+        <div className="theme-left-title animetleft">
           <span>List</span>
           <div className="theme-left-title2">items</div>
         </div>
       </div>
       <div className="theme-right">
-        <div className="box-theme">
+        <div className="box-theme opacity">
           <div className="mode">Light Mode</div>
           <div className="mode-choose">
             <button className="choose light">
@@ -113,7 +114,7 @@ function LeftTheme() {
 function LeftItem() {
   return (
     <div className="items">
-      <div className="box-box">
+      <div className="box-box phase1">
         <div className="box-items">
           <label className="box-item">
             <input type="checkbox" />
@@ -195,7 +196,7 @@ function LeftItem() {
           </div>
         </div>
       </div>
-      <div className="box-box">
+      <div className="box-box phase2">
         <div className="box-items">
           <label className="box-item">
             <input type="checkbox" />
@@ -277,7 +278,7 @@ function LeftItem() {
           </div>
         </div>
       </div>
-      <div className="box-box">
+      <div className="box-box phase2">
         <div className="box-items">
           <label className="box-item">
             <input type="checkbox" />
@@ -359,7 +360,7 @@ function LeftItem() {
           </div>
         </div>
       </div>
-      <div className="box-box">
+      <div className="box-box phase1">
         <div className="box-items">
           <label className="box-item">
             <input type="checkbox" />
@@ -453,47 +454,47 @@ function RightSort() {
           <div className="sort-big">Clear</div>
           <div className="theme-left-title2 sort-big">Focus</div>
         </div>
-        <span className="sort-small">SORT BY :</span>
+        <span className="sort-small right-slow">SORT BY :</span>
       </div>
       <div className="sort-footer">
-        <button className="theme-left-title2 sort-small btn-color">
+        <button className="theme-left-title2 sort-small btn-color right-fast">
           INPUT ORDER
         </button>
-        <button className="theme-left-title2 sort-small btn-white">
+        <button className="theme-left-title2 sort-small btn-white right-normal">
           DESCRIPTION
         </button>
-        <button className="theme-left-title2 sort-small btn-white">
+        <button className="theme-left-title2 sort-small btn-white right-slow">
           TICK STATUS
         </button>
       </div>
       <div className="sort-clear">
-        <button className="theme-left-title2 sort-small btn-color">
+        <button className="theme-left-title2 sort-small btn-color right-fast">
           CLEAR LIST
         </button>
       </div>
       <div className="bar">
-        <div className="percentage">
+        <div className="percentage right-slow">
           <span>0%</span>
           <span>25%</span>
           <span>50%</span>
           <span>75%</span>
           <span>100%</span>
         </div>
-        <div className="progress">
+        <div className="progress right-fast">
           <div className="progress-bar"></div>
         </div>
       </div>
       <div className="total">
         <div className="absolute">
-          <img src={Line} alt="Line" />
+          <img src={Line} alt="Line" className="opacity" />
         </div>
         <div className="total-text-upper">
-          <span className="total-small up">Current</span>
-          <span className="total-big">01</span>
+          <span className="total-small up right-slow">Current</span>
+          <span className="total-big right-fast">01</span>
         </div>
         <div className="total-text-under">
-          <span className="total-big">21</span>
-          <span className="total-small down">Total List</span>
+          <span className="total-big right-fast">21</span>
+          <span className="total-small down right-slow">Total List</span>
         </div>
       </div>
     </div>
