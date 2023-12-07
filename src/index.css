@@ -44,7 +44,7 @@ select option {
 }
 @keyframes slideInTop {
   from {
-    transform: translateY(-90px);
+    transform: translateY(-140px);
   }
   to {
     transform: translateY(0);
@@ -106,6 +106,7 @@ select option {
   margin-top: 8rem;
   position: absolute;
   z-index: -1;
+  animation: opacity 1.5s ease-in;
 }
 
 /* NAVBAR */
@@ -162,7 +163,7 @@ select option {
   border-radius: 3rem;
   background-color: var(--clr-gray-form);
   color: var(--clr-primary);
-  animation: slideInTop 1s ease;
+  animation: slideInTop 1.3s ease;
 }
 
 .add-input input {
@@ -268,7 +269,7 @@ select option {
 }
 
 .opacity {
-  animation: opacity 1.5s ease-in;
+  animation: opacity 1.5s ease;
 }
 
 .phase1 {
@@ -550,6 +551,10 @@ select option {
   font-size: 1.1rem;
   font-weight: 400;
   cursor: pointer;
+}
+
+.no-pointer {
+  cursor: default;
 }
 
 .sort-clear {
