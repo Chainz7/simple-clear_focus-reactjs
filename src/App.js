@@ -11,8 +11,8 @@ import Dark from "./design/Dark Mode.png";
 import Line from "./design/Line 3.png";
 
 const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
+  { id: 1, description: "Passports", quantity: 0, packed: false },
+  { id: 2, description: "Socks", quantity: 1, packed: false },
   { id: 3, description: "Socks", quantity: 12, packed: false },
   { id: 4, description: "Socks", quantity: 12, packed: false },
   { id: 5, description: "Socks", quantity: 12, packed: false },
@@ -65,18 +65,26 @@ export default function App() {
 }
 
 function Navbar() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
+  }
+
   return (
     <div className="navbar opacity">
       <img src={Logo} alt="" className="add-logo" />
-      <form className="add-form">
+      <form className="add-form" onSubmit={handleSubmit}>
         <button>
           <img src={Plus} alt="" />
         </button>
         <div className="add-input">
           <input type="text" placeholder="Add Item..." />
           <select>
-            <option value={1}>1</option>
-            <option value={2}>2</option>
+            {Array.from({ length: 16 }, (_, i) => i).map((num) => (
+              <option value={num} key={num}>
+                {num}
+              </option>
+            ))}
           </select>
         </div>
       </form>
@@ -179,7 +187,8 @@ function Item({ item }) {
         <img class="unchecked" src={UnTick} alt="a" />
         <img class="checked" src={Tick} alt="a" />
         <span className="box-span">
-          {item.quantity} {item.description}
+          {item.quantity > 0 && `${item.quantity} `}
+          {item.description}
         </span>
       </label>
       <div className="box-button">
