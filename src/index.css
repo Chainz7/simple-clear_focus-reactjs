@@ -315,9 +315,9 @@ select option {
   display: block;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 1.7rem;
   font-weight: 400;
-  text-overflow: ellipsis;
 }
 
 @keyframes strike {

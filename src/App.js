@@ -1,9 +1,3 @@
-// const initialItems = [
-//   { id: 1, description: "Passports", quantity: 2, packed: false },
-//   { id: 2, description: "Socks", quantity: 12, packed: false },
-//   { id: 3, description: "Charger", quantity: 20, packed: false },
-// ];
-
 import BG from "./design/Anime.png";
 import Logo from "./design/Title.png";
 import Plus from "./design/Plus.png";
@@ -16,6 +10,30 @@ import LightWhite from "./design/Light Mode White.png";
 import Dark from "./design/Dark Mode.png";
 import Line from "./design/Line 3.png";
 
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: false },
+  { id: 3, description: "Socks", quantity: 12, packed: false },
+  { id: 4, description: "Socks", quantity: 12, packed: false },
+  { id: 5, description: "Socks", quantity: 12, packed: false },
+  { id: 6, description: "Socks", quantity: 12, packed: false },
+  { id: 7, description: "Socks", quantity: 12, packed: false },
+  { id: 8, description: "Socks", quantity: 12, packed: false },
+  { id: 9, description: "Socks", quantity: 12, packed: false },
+  { id: 10, description: "Socks", quantity: 12, packed: false },
+  { id: 11, description: "Socks", quantity: 12, packed: false },
+  { id: 12, description: "Socks", quantity: 12, packed: false },
+  { id: 13, description: "Socks", quantity: 12, packed: false },
+  { id: 14, description: "Socks", quantity: 12, packed: false },
+  { id: 15, description: "Socks", quantity: 12, packed: false },
+  { id: 16, description: "Socks", quantity: 12, packed: false },
+  { id: 17, description: "Socks", quantity: 12, packed: false },
+  { id: 18, description: "Socks", quantity: 12, packed: false },
+  { id: 19, description: "Socks", quantity: 12, packed: false },
+  { id: 20, description: "Socks", quantity: 12, packed: false },
+  // { id: 21, description: "aaaaa", quantity: 12, packed: false },
+];
+
 export default function App() {
   return (
     <div className="app">
@@ -23,9 +41,20 @@ export default function App() {
       <Navbar />
       <div className="main">
         <div className="left">
-          <LeftText />
-          <LeftTheme />
-          <LeftItem />
+          <LeftTextUpper />
+          <div className="theme-box opacity">
+            <div className="theme-left">
+              <LeftItemFifth />
+              <LeftTextUnder />
+            </div>
+            <LeftTheme />
+          </div>
+          <div className="items">
+            <LeftItemFirst />
+            <LeftItemSecond />
+            <LeftItemThird />
+            <LeftItemFourth />
+          </div>
         </div>
         <div className="right">
           <RightSort />
@@ -55,7 +84,7 @@ function Navbar() {
   );
 }
 
-function LeftText() {
+function LeftTextUpper() {
   return (
     <div className="text-box opacity no-pointer">
       <div className="text-1">Time to</div>
@@ -65,382 +94,101 @@ function LeftText() {
   );
 }
 
+function LeftTextUnder() {
+  return (
+    <div className="theme-left-title animetleft no-pointer">
+      <span>List</span>
+      <div className="theme-left-title2">items</div>
+    </div>
+  );
+}
 function LeftTheme() {
   return (
-    <div className="theme-box opacity">
-      <div className="theme-left">
-        {/* Activated when you already done the project */}
-        {/* <div className="box-box opacity">
-          <div className="box-items">
-            <label className="box-item">
-              <input type="checkbox" />
-              <img class="unchecked" src={UnTick} alt="a" />
-              <img class="checked" src={Tick} alt="a" />
-              <span className="box-span">1 adasdasdasd Tootbrush</span>
-            </label>
-            <div className="box-button">
-              <button>
-                <img src={Detail} alt="a" />
-              </button>
-              <button>
-                <img src={Delete} alt="a" />
-              </button>
-            </div>
-          </div>
-        </div> */}
-        <div className="theme-left-title animetleft no-pointer">
-          <span>List</span>
-          <div className="theme-left-title2">items</div>
-        </div>
-      </div>
-      <div className="theme-right">
-        <div className="box-theme opacity">
-          <div className="mode no-pointer">Light Mode</div>
-          <div className="mode-choose">
-            <button className="choose light">
-              <img src={Light} alt="a" className="normal-state" />
-              <img src={LightWhite} alt="a" className="light-hover" />
-            </button>
-            <button className="choose dark">
-              <img src={Dark} alt="a" />
-            </button>
-          </div>
+    <div className="theme-right">
+      <div className="box-theme opacity">
+        <div className="mode no-pointer">Light Mode</div>
+        <div className="mode-choose">
+          <button className="choose light">
+            <img src={Light} alt="a" className="normal-state" />
+            <img src={LightWhite} alt="a" className="light-hover" />
+          </button>
+          <button className="choose dark">
+            <img src={Dark} alt="a" />
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-function LeftItem() {
+function LeftItemFirst() {
+  const itemsToShow = initialItems.slice(0, 5);
   return (
-    <div className="items">
-      <div className="box-box phase1">
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">1 adasdasdasd Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">1 adasdasdasd Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="box-box phase2">
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="box-box phase2">
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="box-box phase1">
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
-        <div className="box-items">
-          <label className="box-item">
-            <input type="checkbox" />
-            <img class="unchecked" src={UnTick} alt="a" />
-            <img class="checked" src={Tick} alt="a" />
-            <span className="box-span">Tootbrush</span>
-          </label>
-          <div className="box-button">
-            <button>
-              <img src={Detail} alt="a" />
-            </button>
-            <button>
-              <img src={Delete} alt="a" />
-            </button>
-          </div>
-        </div>
+    <div className="box-box phase1">
+      {itemsToShow.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  );
+}
+function LeftItemSecond() {
+  const itemsToShow = initialItems.slice(5, 10);
+  return itemsToShow.length > 0 ? (
+    <div className="box-box phase2">
+      {itemsToShow.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  ) : null;
+}
+function LeftItemThird() {
+  const itemsToShow = initialItems.slice(10, 15);
+  return itemsToShow.length > 0 ? (
+    <div className="box-box phase2">
+      {itemsToShow.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  ) : null;
+}
+function LeftItemFourth() {
+  const itemsToShow = initialItems.slice(15, 20);
+  return itemsToShow.length > 0 ? (
+    <div className="box-box phase2">
+      {itemsToShow.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  ) : null;
+}
+function LeftItemFifth() {
+  const shouldRender =
+    initialItems.length > 20 && initialItems[20] !== undefined;
+  return shouldRender ? (
+    <div className="box-box opacity">
+      <Item key={initialItems[20].id} item={initialItems[20]} />
+    </div>
+  ) : null;
+}
+
+function Item({ item }) {
+  return (
+    <div className="box-items">
+      <label className="box-item">
+        <input type="checkbox" />
+        <img class="unchecked" src={UnTick} alt="a" />
+        <img class="checked" src={Tick} alt="a" />
+        <span className="box-span">
+          {item.quantity} {item.description}
+        </span>
+      </label>
+      <div className="box-button">
+        <button>
+          <img src={Detail} alt="a" />
+        </button>
+        <button>
+          <img src={Delete} alt="a" />
+        </button>
       </div>
     </div>
   );
@@ -486,7 +234,7 @@ function RightSort() {
       </div>
       <div className="total">
         <div className="absolute">
-          <img src={Line} alt="Line" className="opacity" />
+          <img src={Line} alt="Line" className="right-fast opacity" />
         </div>
         <div className="total-text-upper no-pointer">
           <span className="total-small up right-slow">Current</span>
