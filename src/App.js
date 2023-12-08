@@ -9,6 +9,7 @@ import Light from "./design/Light Mode.png";
 import LightWhite from "./design/Light Mode White.png";
 import Dark from "./design/Dark Mode.png";
 import Line from "./design/Line 3.png";
+import { useState } from "react";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 0, packed: false },
@@ -65,9 +66,20 @@ export default function App() {
 }
 
 function Navbar() {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
+
+    if (!description) return;
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    console.log(newItem);
+
+    setDescription("");
+    setQuantity(0);
   }
 
   return (
@@ -78,8 +90,22 @@ function Navbar() {
           <img src={Plus} alt="" />
         </button>
         <div className="add-input">
-          <input type="text" placeholder="Add Item..." />
-          <select>
+          <input
+            type="text"
+            placeholder="Add Item..."
+            value={description}
+            onChange={(e) => {
+              // console.log(e.target.value);
+              setDescription(e.target.value);
+            }}
+          />
+          <select
+            value={quantity}
+            onChange={(e) => {
+              // console.log(e.target.value);
+              setQuantity(Number(e.target.value));
+            }}
+          >
             {Array.from({ length: 16 }, (_, i) => i).map((num) => (
               <option value={num} key={num}>
                 {num}
