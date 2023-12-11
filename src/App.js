@@ -40,7 +40,9 @@ export default function App() {
       <div className="wrapper-row">
         <div className="maiwra-container">
           <div className="wrapper-column">
-            <LeftUpperText />
+            <div className="lefup-wrapper">
+              <LeftUpperText />
+            </div>
             <div className="lefmid-container animated-opacity">
               <div className="lefmicon-left">
                 <LeftItemFifth
@@ -312,42 +314,44 @@ function RightSort({ items }) {
           CLEAR LIST
         </button>
       </div>
-      <div className="rigwra-container-bar">
-        <div className="rigwra-conbar-percentage animated-slideright-slow">
-          {thresholds.map((threshold) => (
-            <span
-              key={threshold}
-              style={
-                threshold === nearestThreshold ? { fontWeight: "bold" } : {}
-              }
-            >
-              {threshold}%
+      <div>
+        <div className="rigwra-container-bar">
+          <div className="rigwra-conbar-percentage animated-slideright-slow">
+            {thresholds.map((threshold) => (
+              <span
+                key={threshold}
+                style={
+                  threshold === nearestThreshold ? { fontWeight: "bold" } : {}
+                }
+              >
+                {threshold}%
+              </span>
+            ))}
+          </div>
+          <div className="rigwra-conbar-progress animated-slideright-fast">
+            <div></div>
+          </div>
+        </div>
+        <div className="rigwra-container-total">
+          <div className="rigwra-contot-image">
+            <img src={Line} alt="Line" className="animated-slideright-fast" />
+          </div>
+          <div className="rigwra-contot-up">
+            <span className="rigwra-contotup-small up animated-slideright-slow">
+              Current
             </span>
-          ))}
-        </div>
-        <div className="rigwra-conbar-progress animated-slideright-fast">
-          <div></div>
-        </div>
-      </div>
-      <div className="rigwra-container-total">
-        <div className="rigwra-contot-image">
-          <img src={Line} alt="Line" className="animated-slideright-fast" />
-        </div>
-        <div className="rigwra-contot-up">
-          <span className="rigwra-contotup-small up animated-slideright-slow">
-            Current
-          </span>
-          <span className="rigwra-contotup-big animated-slideright-fast">
-            {numPacked < 10 ? `0${numPacked}` : numPacked}
-          </span>
-        </div>
-        <div className="rigwra-contot-bot">
-          <span className="rigwra-contotup-big animated-slideright-fast">
-            {numItems < 10 ? `0${numItems}` : numItems}
-          </span>
-          <span className="rigwra-contotup-small down animated-slideright-slow">
-            Total List
-          </span>
+            <span className="rigwra-contotup-big animated-slideright-fast">
+              {numPacked < 10 ? `0${numPacked}` : numPacked}
+            </span>
+          </div>
+          <div className="rigwra-contot-bot">
+            <span className="rigwra-contotup-big animated-slideright-fast">
+              {numItems < 10 ? `0${numItems}` : numItems}
+            </span>
+            <span className="rigwra-contotup-small down animated-slideright-slow">
+              Total List
+            </span>
+          </div>
         </div>
       </div>
     </div>
