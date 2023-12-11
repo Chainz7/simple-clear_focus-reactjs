@@ -42,6 +42,10 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
   return (
     <div className="app">
       <div className="wrapper-row animated-opacity-slow">
@@ -54,16 +58,16 @@ export default function App() {
             <LeftUpperText />
             <div className="lefmid-container animated-opacity">
               <div className="lefmicon-left">
-                <LeftItemFifth items={items} />
+                <LeftItemFifth items={items} onDeleteItem={handleDeleteItem} />
                 <LeftMiddleText />
               </div>
               <LeftMiddleTheme />
             </div>
             <div className="lefbot-container">
-              <LeftItemFirst items={items} />
-              <LeftItemSecond items={items} />
-              <LeftItemThird items={items} />
-              <LeftItemFourth items={items} />
+              <LeftItemFirst items={items} onDeleteItem={handleDeleteItem} />
+              <LeftItemSecond items={items} onDeleteItem={handleDeleteItem} />
+              <LeftItemThird items={items} onDeleteItem={handleDeleteItem} />
+              <LeftItemFourth items={items} onDeleteItem={handleDeleteItem} />
             </div>
           </div>
           <div className="right-wrapper animated-opacity">
@@ -166,56 +170,56 @@ function LeftMiddleTheme() {
   );
 }
 
-function LeftItemFirst({ items }) {
+function LeftItemFirst({ items, onDeleteItem }) {
   const itemsToShow = items.slice(0, 5);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-slow animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
       ))}
     </div>
   ) : null;
 }
-function LeftItemSecond({ items }) {
+function LeftItemSecond({ items, onDeleteItem }) {
   const itemsToShow = items.slice(5, 10);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
       ))}
     </div>
   ) : null;
 }
-function LeftItemThird({ items }) {
+function LeftItemThird({ items, onDeleteItem }) {
   const itemsToShow = items.slice(10, 15);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
       ))}
     </div>
   ) : null;
 }
-function LeftItemFourth({ items }) {
+function LeftItemFourth({ items, onDeleteItem }) {
   const itemsToShow = items.slice(15, 20);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
       ))}
     </div>
   ) : null;
 }
-function LeftItemFifth({ items }) {
+function LeftItemFifth({ items, onDeleteItem }) {
   const shouldRender = items.length > 20 && items[20] !== undefined;
   return shouldRender ? (
     <div className="lefbocon-wrapper animated-opacity">
-      <Item key={items[20].id} item={items[20]} />
+      <Item key={items[20].id} item={items[20]} onDeleteItem={onDeleteItem} />
     </div>
   ) : null;
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItem }) {
   return (
     <div className="lefbocon-wrapper-container">
       <label className="lefbocon-wracon-text">
@@ -231,7 +235,7 @@ function Item({ item }) {
         <button>
           <img src={Detail} alt="Detail" />
         </button>
-        <button>
+        <button onClick={() => onDeleteItem(item.id)}>
           <img src={Delete} alt="Delete" />
         </button>
       </div>
