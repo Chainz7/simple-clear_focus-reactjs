@@ -557,7 +557,7 @@ body {
 
 .rigwra-contot-up {
   position: absolute;
-  left: 1.2rem;
+  left: 0.6rem;
   top: 0rem;
   display: flex;
   flex-direction: column;
@@ -579,7 +579,7 @@ body {
 
 .rigwra-contot-bot {
   position: absolute;
-  right: 1.2rem;
+  right: 0.6rem;
   bottom: 0rem;
   display: flex;
   flex-direction: column;

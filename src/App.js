@@ -11,32 +11,9 @@ import Dark from "./design/Dark Mode.png";
 import Line from "./design/Line 3.png";
 import { useState } from "react";
 
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 0, packed: false },
-  { id: 2, description: "Socks", quantity: 1, packed: false },
-  { id: 3, description: "Socks", quantity: 12, packed: false },
-  { id: 4, description: "Socks", quantity: 12, packed: false },
-  { id: 5, description: "Socks", quantity: 12, packed: false },
-  { id: 6, description: "Socks", quantity: 12, packed: false },
-  { id: 7, description: "Socks", quantity: 12, packed: false },
-  { id: 8, description: "Socks", quantity: 12, packed: false },
-  { id: 9, description: "Socks", quantity: 12, packed: false },
-  { id: 10, description: "Socks", quantity: 12, packed: false },
-  { id: 11, description: "Socks", quantity: 12, packed: false },
-  { id: 12, description: "Socks", quantity: 12, packed: false },
-  { id: 13, description: "Socks", quantity: 12, packed: false },
-  { id: 14, description: "Socks", quantity: 12, packed: false },
-  { id: 15, description: "Socks", quantity: 12, packed: false },
-  { id: 16, description: "Socks", quantity: 12, packed: false },
-  // { id: 17, description: "Socks", quantity: 12, packed: false },
-  // { id: 18, description: "Socks", quantity: 12, packed: false },
-  // { id: 19, description: "Socks", quantity: 12, packed: false },
-  // { id: 20, description: "Socks", quantity: 12, packed: false },
-  // { id: 21, description: "aaaaa", quantity: 12, packed: false },
-];
-
 export default function App() {
   const [items, setItems] = useState([]);
+  const numItems = items.length;
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
@@ -44,6 +21,14 @@ export default function App() {
 
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id !== id));
+  }
+
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
   }
 
   return (
@@ -58,20 +43,40 @@ export default function App() {
             <LeftUpperText />
             <div className="lefmid-container animated-opacity">
               <div className="lefmicon-left">
-                <LeftItemFifth items={items} onDeleteItem={handleDeleteItem} />
+                <LeftItemFifth
+                  items={items}
+                  onDeleteItem={handleDeleteItem}
+                  onToggleItem={handleToggleItem}
+                />
                 <LeftMiddleText />
               </div>
               <LeftMiddleTheme />
             </div>
             <div className="lefbot-container">
-              <LeftItemFirst items={items} onDeleteItem={handleDeleteItem} />
-              <LeftItemSecond items={items} onDeleteItem={handleDeleteItem} />
-              <LeftItemThird items={items} onDeleteItem={handleDeleteItem} />
-              <LeftItemFourth items={items} onDeleteItem={handleDeleteItem} />
+              <LeftItemFirst
+                items={items}
+                onDeleteItem={handleDeleteItem}
+                onToggleItem={handleToggleItem}
+              />
+              <LeftItemSecond
+                items={items}
+                onDeleteItem={handleDeleteItem}
+                onToggleItem={handleToggleItem}
+              />
+              <LeftItemThird
+                items={items}
+                onDeleteItem={handleDeleteItem}
+                onToggleItem={handleToggleItem}
+              />
+              <LeftItemFourth
+                items={items}
+                onDeleteItem={handleDeleteItem}
+                onToggleItem={handleToggleItem}
+              />
             </div>
           </div>
           <div className="right-wrapper animated-opacity">
-            <RightSort />
+            <RightSort items={items} />
           </div>
         </div>
       </div>
@@ -170,60 +175,88 @@ function LeftMiddleTheme() {
   );
 }
 
-function LeftItemFirst({ items, onDeleteItem }) {
+function LeftItemFirst({ items, onDeleteItem, onToggleItem }) {
   const itemsToShow = items.slice(0, 5);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-slow animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
+        <Item
+          key={item.id}
+          item={item}
+          onDeleteItem={onDeleteItem}
+          onToggleItem={onToggleItem}
+        />
       ))}
     </div>
   ) : null;
 }
-function LeftItemSecond({ items, onDeleteItem }) {
+function LeftItemSecond({ items, onDeleteItem, onToggleItem }) {
   const itemsToShow = items.slice(5, 10);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
+        <Item
+          key={item.id}
+          item={item}
+          onDeleteItem={onDeleteItem}
+          onToggleItem={onToggleItem}
+        />
       ))}
     </div>
   ) : null;
 }
-function LeftItemThird({ items, onDeleteItem }) {
+function LeftItemThird({ items, onDeleteItem, onToggleItem }) {
   const itemsToShow = items.slice(10, 15);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
+        <Item
+          key={item.id}
+          item={item}
+          onDeleteItem={onDeleteItem}
+          onToggleItem={onToggleItem}
+        />
       ))}
     </div>
   ) : null;
 }
-function LeftItemFourth({ items, onDeleteItem }) {
+function LeftItemFourth({ items, onDeleteItem, onToggleItem }) {
   const itemsToShow = items.slice(15, 20);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} onDeleteItem={onDeleteItem} />
+        <Item
+          key={item.id}
+          item={item}
+          onDeleteItem={onDeleteItem}
+          onToggleItem={onToggleItem}
+        />
       ))}
     </div>
   ) : null;
 }
-function LeftItemFifth({ items, onDeleteItem }) {
+function LeftItemFifth({ items, onDeleteItem, onToggleItem }) {
   const shouldRender = items.length > 20 && items[20] !== undefined;
   return shouldRender ? (
     <div className="lefbocon-wrapper animated-opacity">
-      <Item key={items[20].id} item={items[20]} onDeleteItem={onDeleteItem} />
+      <Item
+        key={items[20].id}
+        item={items[20]}
+        onDeleteItem={onDeleteItem}
+        onToggleItem={onToggleItem}
+      />
     </div>
   ) : null;
 }
-
-function Item({ item, onDeleteItem }) {
+function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <div className="lefbocon-wrapper-container">
       <label className="lefbocon-wracon-text">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          value={item.packed}
+          onChange={() => onToggleItem(item.id)}
+        />
         <img class="unchecked" src={UnTick} alt="Uncheck" />
         <img class="checked" src={Tick} alt="Checked" />
         <span>
@@ -243,7 +276,15 @@ function Item({ item, onDeleteItem }) {
   );
 }
 
-function RightSort() {
+function RightSort({ items }) {
+  const numItems = items.length;
+  const numPacked = items.filter((item) => item.packed).length;
+  const percentage = Math.round((numPacked / numItems) * 100);
+  const thresholds = [0, 25, 50, 75, 100];
+  const nearestThreshold = thresholds.reduce((prev, curr) =>
+    Math.abs(curr - percentage) < Math.abs(prev - percentage) ? curr : prev
+  );
+
   return (
     <div className="rigwra-container">
       <div className="rigwra-container-up ">
@@ -273,11 +314,16 @@ function RightSort() {
       </div>
       <div className="rigwra-container-bar">
         <div className="rigwra-conbar-percentage animated-slideright-slow">
-          <span>0%</span>
-          <span>25%</span>
-          <span>50%</span>
-          <span>75%</span>
-          <span>100%</span>
+          {thresholds.map((threshold) => (
+            <span
+              key={threshold}
+              style={
+                threshold === nearestThreshold ? { fontWeight: "bold" } : {}
+              }
+            >
+              {threshold}%
+            </span>
+          ))}
         </div>
         <div className="rigwra-conbar-progress animated-slideright-fast">
           <div></div>
@@ -292,12 +338,12 @@ function RightSort() {
             Current
           </span>
           <span className="rigwra-contotup-big animated-slideright-fast">
-            01
+            {numPacked < 10 ? `0${numPacked}` : numPacked}
           </span>
         </div>
         <div className="rigwra-contot-bot">
           <span className="rigwra-contotup-big animated-slideright-fast">
-            21
+            {numItems < 10 ? `0${numItems}` : numItems}
           </span>
           <span className="rigwra-contotup-small down animated-slideright-slow">
             Total List
