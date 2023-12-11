@@ -639,10 +639,7 @@ body {
 }
 
 .animated-slidebot-fast {
-  animation: slideInDown 1.4s ease;
-}
-.animated-slidebot-slow {
-  animation: slideInDown 1.8s ease;
+  animation: slideInDown 1s ease;
 }
 
 @keyframes strike {

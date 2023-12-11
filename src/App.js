@@ -36,28 +36,34 @@ const initialItems = [
 ];
 
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+
   return (
     <div className="app">
       <div className="wrapper-row animated-opacity-slow">
         <img src={BG} alt="" className="background" />
       </div>
-      <Navbar />
+      <Navbar onAddItems={handleAddItems} />
       <div className="wrapper-row">
         <div className="maiwra-container">
           <div className="wrapper-column">
             <LeftUpperText />
             <div className="lefmid-container animated-opacity">
               <div className="lefmicon-left">
-                <LeftItemFifth />
+                <LeftItemFifth items={items} />
                 <LeftMiddleText />
               </div>
               <LeftMiddleTheme />
             </div>
             <div className="lefbot-container">
-              <LeftItemFirst />
-              <LeftItemSecond />
-              <LeftItemThird />
-              <LeftItemFourth />
+              <LeftItemFirst items={items} />
+              <LeftItemSecond items={items} />
+              <LeftItemThird items={items} />
+              <LeftItemFourth items={items} />
             </div>
           </div>
           <div className="right-wrapper animated-opacity">
@@ -69,7 +75,7 @@ export default function App() {
   );
 }
 
-function Navbar() {
+function Navbar({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
 
@@ -80,6 +86,8 @@ function Navbar() {
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
+
+    onAddItems(newItem);
 
     setDescription("");
     setQuantity(0);
@@ -158,18 +166,8 @@ function LeftMiddleTheme() {
   );
 }
 
-function LeftItemFirst() {
-  const itemsToShow = initialItems.slice(0, 5);
-  return (
-    <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
-      {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} />
-      ))}
-    </div>
-  );
-}
-function LeftItemSecond() {
-  const itemsToShow = initialItems.slice(5, 10);
+function LeftItemFirst({ items }) {
+  const itemsToShow = items.slice(0, 5);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-slow animated-opacity">
       {itemsToShow.map((item) => (
@@ -178,18 +176,8 @@ function LeftItemSecond() {
     </div>
   ) : null;
 }
-function LeftItemThird() {
-  const itemsToShow = initialItems.slice(10, 15);
-  return itemsToShow.length > 0 ? (
-    <div className="lefbocon-wrapper animated-slidebot-slow animated-opacity">
-      {itemsToShow.map((item) => (
-        <Item key={item.id} item={item} />
-      ))}
-    </div>
-  ) : null;
-}
-function LeftItemFourth() {
-  const itemsToShow = initialItems.slice(15, 20);
+function LeftItemSecond({ items }) {
+  const itemsToShow = items.slice(5, 10);
   return itemsToShow.length > 0 ? (
     <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
@@ -198,12 +186,31 @@ function LeftItemFourth() {
     </div>
   ) : null;
 }
-function LeftItemFifth() {
-  const shouldRender =
-    initialItems.length > 20 && initialItems[20] !== undefined;
+function LeftItemThird({ items }) {
+  const itemsToShow = items.slice(10, 15);
+  return itemsToShow.length > 0 ? (
+    <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
+      {itemsToShow.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  ) : null;
+}
+function LeftItemFourth({ items }) {
+  const itemsToShow = items.slice(15, 20);
+  return itemsToShow.length > 0 ? (
+    <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
+      {itemsToShow.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  ) : null;
+}
+function LeftItemFifth({ items }) {
+  const shouldRender = items.length > 20 && items[20] !== undefined;
   return shouldRender ? (
-    <div className="lefbocon-wrapper animated-opacity animated-opacity">
-      <Item key={initialItems[20].id} item={initialItems[20]} />
+    <div className="lefbocon-wrapper animated-opacity">
+      <Item key={items[20].id} item={items[20]} />
     </div>
   ) : null;
 }
