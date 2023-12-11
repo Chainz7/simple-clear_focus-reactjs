@@ -294,11 +294,11 @@ function RightSort({ items }) {
           <span>Clear</span>
           <div className="rigwra-conupcon-container">Focus</div>
         </div>
-        <span className="rigwra-container-small animated-slideright-slow">
-          SORT BY :
-        </span>
       </div>
       <div className="rigwra-container-mid">
+        <span className="rigwra-container-small center animated-slideright-slow">
+          SORT BY :
+        </span>
         <button className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast">
           INPUT ORDER
         </button>
@@ -314,7 +314,7 @@ function RightSort({ items }) {
           CLEAR LIST
         </button>
       </div>
-      <div>
+      <div className="rigwra-container-wrapper">
         <div className="rigwra-container-bar">
           <div className="rigwra-conbar-percentage animated-slideright-slow">
             {thresholds.map((threshold) => (

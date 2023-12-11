@@ -491,6 +491,14 @@ body {
   cursor: default;
 }
 
+.center {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-white {
   border: 1px solid var(--clr-primary);
   background-color: #ffffff00;
@@ -523,6 +531,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.rigwra-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .rigwra-container-bar {
