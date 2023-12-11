@@ -28,37 +28,41 @@ const initialItems = [
   { id: 14, description: "Socks", quantity: 12, packed: false },
   { id: 15, description: "Socks", quantity: 12, packed: false },
   { id: 16, description: "Socks", quantity: 12, packed: false },
-  { id: 17, description: "Socks", quantity: 12, packed: false },
-  { id: 18, description: "Socks", quantity: 12, packed: false },
-  { id: 19, description: "Socks", quantity: 12, packed: false },
-  { id: 20, description: "Socks", quantity: 12, packed: false },
+  // { id: 17, description: "Socks", quantity: 12, packed: false },
+  // { id: 18, description: "Socks", quantity: 12, packed: false },
+  // { id: 19, description: "Socks", quantity: 12, packed: false },
+  // { id: 20, description: "Socks", quantity: 12, packed: false },
   // { id: 21, description: "aaaaa", quantity: 12, packed: false },
 ];
 
 export default function App() {
   return (
     <div className="app">
-      <img src={BG} alt="" className="background" />
+      <div className="wrapper-row animated-opacity-slow">
+        <img src={BG} alt="" className="background" />
+      </div>
       <Navbar />
-      <div className="main">
-        <div className="left">
-          <LeftTextUpper />
-          <div className="theme-box opacity">
-            <div className="theme-left">
-              <LeftItemFifth />
-              <LeftTextUnder />
+      <div className="wrapper-row">
+        <div className="maiwra-container">
+          <div className="wrapper-column">
+            <LeftUpperText />
+            <div className="lefmid-container animated-opacity">
+              <div className="lefmicon-left">
+                <LeftItemFifth />
+                <LeftMiddleText />
+              </div>
+              <LeftMiddleTheme />
             </div>
-            <LeftTheme />
+            <div className="lefbot-container">
+              <LeftItemFirst />
+              <LeftItemSecond />
+              <LeftItemThird />
+              <LeftItemFourth />
+            </div>
           </div>
-          <div className="items">
-            <LeftItemFirst />
-            <LeftItemSecond />
-            <LeftItemThird />
-            <LeftItemFourth />
+          <div className="right-wrapper animated-opacity">
+            <RightSort />
           </div>
-        </div>
-        <div className="right">
-          <RightSort />
         </div>
       </div>
     </div>
@@ -71,7 +75,6 @@ function Navbar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(e);
 
     if (!description) return;
 
@@ -83,71 +86,71 @@ function Navbar() {
   }
 
   return (
-    <div className="navbar opacity">
-      <img src={Logo} alt="" className="add-logo" />
-      <form className="add-form" onSubmit={handleSubmit}>
-        <button>
-          <img src={Plus} alt="" />
-        </button>
-        <div className="add-input">
-          <input
-            type="text"
-            placeholder="Add Item..."
-            value={description}
-            onChange={(e) => {
-              // console.log(e.target.value);
-              setDescription(e.target.value);
-            }}
-          />
-          <select
-            value={quantity}
-            onChange={(e) => {
-              // console.log(e.target.value);
-              setQuantity(Number(e.target.value));
-            }}
-          >
-            {Array.from({ length: 16 }, (_, i) => i).map((num) => (
-              <option value={num} key={num}>
-                {num}
-              </option>
-            ))}
-          </select>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function LeftTextUpper() {
-  return (
-    <div className="text-box opacity no-pointer">
-      <div className="text-1">Time to</div>
-      <div className="text-2">Manage</div>
-      <div className="text-3">Your Focus</div>
-    </div>
-  );
-}
-
-function LeftTextUnder() {
-  return (
-    <div className="theme-left-title animetleft no-pointer">
-      <span>List</span>
-      <div className="theme-left-title2">items</div>
-    </div>
-  );
-}
-function LeftTheme() {
-  return (
-    <div className="theme-right">
-      <div className="box-theme opacity">
-        <div className="mode no-pointer">Light Mode</div>
-        <div className="mode-choose">
-          <button className="choose light">
-            <img src={Light} alt="a" className="normal-state" />
-            <img src={LightWhite} alt="a" className="light-hover" />
+    <div className="navbar wrapper-row animated-opacity">
+      <div className="navwra-container">
+        <img src={Logo} alt="" className="navcon-logo animated-slidetop-fast" />
+        <form className="navcon-form" onSubmit={handleSubmit}>
+          <button className="animated-slidetop-slow">
+            <img src={Plus} alt="Plus" />
           </button>
-          <button className="choose dark">
-            <img src={Dark} alt="a" />
+          <div className="navfor-input animated-slidetop-normal">
+            <input
+              type="text"
+              placeholder="Add Item..."
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
+            <select
+              value={quantity}
+              onChange={(e) => {
+                setQuantity(Number(e.target.value));
+              }}
+            >
+              {Array.from({ length: 16 }, (_, i) => i).map((num) => (
+                <option value={num} key={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function LeftUpperText() {
+  return (
+    <div className="lefup-container animated-opacity">
+      <div className="lefupcon-1 animated-slideleftspec-slow">Time to</div>
+      <div className="lefupcon-2 animated-slideleftspec-normal">Manage</div>
+      <div className="lefupcon-3 animated-slideleftspec-fast">Your Focus</div>
+    </div>
+  );
+}
+
+function LeftMiddleText() {
+  return (
+    <div className="lefmicon-left-container animated-slideleft-fast">
+      <span>List</span>
+      <div>items</div>
+    </div>
+  );
+}
+function LeftMiddleTheme() {
+  return (
+    <div className="lefmicon-right-wrapper">
+      <div className="lefmicon-rigwra-container">
+        <div className="lefmicon-rigcon-up">Light Mode</div>
+        <div className="lefmicon-rigcon-bot">
+          <button>
+            <img src={Light} alt="Light" className="light-normal" />
+            <img src={LightWhite} alt="Light" className="light-hover" />
+          </button>
+          <button>
+            <img src={Dark} alt="Moon" />
           </button>
         </div>
       </div>
@@ -158,7 +161,7 @@ function LeftTheme() {
 function LeftItemFirst() {
   const itemsToShow = initialItems.slice(0, 5);
   return (
-    <div className="box-box phase1">
+    <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
         <Item key={item.id} item={item} />
       ))}
@@ -168,7 +171,7 @@ function LeftItemFirst() {
 function LeftItemSecond() {
   const itemsToShow = initialItems.slice(5, 10);
   return itemsToShow.length > 0 ? (
-    <div className="box-box phase2">
+    <div className="lefbocon-wrapper animated-slidebot-slow animated-opacity">
       {itemsToShow.map((item) => (
         <Item key={item.id} item={item} />
       ))}
@@ -178,7 +181,7 @@ function LeftItemSecond() {
 function LeftItemThird() {
   const itemsToShow = initialItems.slice(10, 15);
   return itemsToShow.length > 0 ? (
-    <div className="box-box phase2">
+    <div className="lefbocon-wrapper animated-slidebot-slow animated-opacity">
       {itemsToShow.map((item) => (
         <Item key={item.id} item={item} />
       ))}
@@ -188,7 +191,7 @@ function LeftItemThird() {
 function LeftItemFourth() {
   const itemsToShow = initialItems.slice(15, 20);
   return itemsToShow.length > 0 ? (
-    <div className="box-box phase2">
+    <div className="lefbocon-wrapper animated-slidebot-fast animated-opacity">
       {itemsToShow.map((item) => (
         <Item key={item.id} item={item} />
       ))}
@@ -199,7 +202,7 @@ function LeftItemFifth() {
   const shouldRender =
     initialItems.length > 20 && initialItems[20] !== undefined;
   return shouldRender ? (
-    <div className="box-box opacity">
+    <div className="lefbocon-wrapper animated-opacity animated-opacity">
       <Item key={initialItems[20].id} item={initialItems[20]} />
     </div>
   ) : null;
@@ -207,22 +210,22 @@ function LeftItemFifth() {
 
 function Item({ item }) {
   return (
-    <div className="box-items">
-      <label className="box-item">
+    <div className="lefbocon-wrapper-container">
+      <label className="lefbocon-wracon-text">
         <input type="checkbox" />
-        <img class="unchecked" src={UnTick} alt="a" />
-        <img class="checked" src={Tick} alt="a" />
-        <span className="box-span">
+        <img class="unchecked" src={UnTick} alt="Uncheck" />
+        <img class="checked" src={Tick} alt="Checked" />
+        <span>
           {item.quantity > 0 && `${item.quantity} `}
           {item.description}
         </span>
       </label>
-      <div className="box-button">
+      <div className="lefbocon-wracon-button">
         <button>
-          <img src={Detail} alt="a" />
+          <img src={Detail} alt="Detail" />
         </button>
         <button>
-          <img src={Delete} alt="a" />
+          <img src={Delete} alt="Delete" />
         </button>
       </div>
     </div>
@@ -231,53 +234,63 @@ function Item({ item }) {
 
 function RightSort() {
   return (
-    <div className="box-right special opacity">
-      <div className="sort-header">
-        <div className="theme-left-title lol no-pointer">
-          <div className="sort-big">Clear</div>
-          <div className="theme-left-title2 sort-big">Focus</div>
+    <div className="rigwra-container">
+      <div className="rigwra-container-up ">
+        <div className="rigwra-conup-container animated-slideright-fast">
+          <span>Clear</span>
+          <div className="rigwra-conupcon-container">Focus</div>
         </div>
-        <span className="sort-small right-slow no-pointer">SORT BY :</span>
+        <span className="rigwra-container-small animated-slideright-slow">
+          SORT BY :
+        </span>
       </div>
-      <div className="sort-footer">
-        <button className="theme-left-title2 sort-small btn-color right-fast anim">
+      <div className="rigwra-container-mid">
+        <button className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast">
           INPUT ORDER
         </button>
-        <button className="theme-left-title2 sort-small btn-white right-normal">
+        <button className="rigwra-conupcon-container rigwra-container-small btn-white animated-slideright-normal">
           DESCRIPTION
         </button>
-        <button className="theme-left-title2 sort-small btn-white right-slow">
+        <button className="rigwra-conupcon-container rigwra-container-small btn-white animated-slideright-slow">
           TICK STATUS
         </button>
       </div>
-      <div className="sort-clear">
-        <button className="theme-left-title2 sort-small btn-color right-fast">
+      <div className="rigwra-container-bot">
+        <button className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast">
           CLEAR LIST
         </button>
       </div>
-      <div className="bar">
-        <div className="percentage right-slow no-pointer">
+      <div className="rigwra-container-bar">
+        <div className="rigwra-conbar-percentage animated-slideright-slow">
           <span>0%</span>
           <span>25%</span>
           <span>50%</span>
           <span>75%</span>
           <span>100%</span>
         </div>
-        <div className="progress right-fast">
-          <div className="progress-bar"></div>
+        <div className="rigwra-conbar-progress animated-slideright-fast">
+          <div></div>
         </div>
       </div>
-      <div className="total">
-        <div className="absolute">
-          <img src={Line} alt="Line" className="right-fast opacity" />
+      <div className="rigwra-container-total">
+        <div className="rigwra-contot-image">
+          <img src={Line} alt="Line" className="animated-slideright-fast" />
         </div>
-        <div className="total-text-upper no-pointer">
-          <span className="total-small up right-slow">Current</span>
-          <span className="total-big right-fast">01</span>
+        <div className="rigwra-contot-up">
+          <span className="rigwra-contotup-small up animated-slideright-slow">
+            Current
+          </span>
+          <span className="rigwra-contotup-big animated-slideright-fast">
+            01
+          </span>
         </div>
-        <div className="total-text-under no-pointer">
-          <span className="total-big right-fast">21</span>
-          <span className="total-small down right-slow">Total List</span>
+        <div className="rigwra-contot-bot">
+          <span className="rigwra-contotup-big animated-slideright-fast">
+            21
+          </span>
+          <span className="rigwra-contotup-small down animated-slideright-slow">
+            Total List
+          </span>
         </div>
       </div>
     </div>
