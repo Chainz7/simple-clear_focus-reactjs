@@ -371,16 +371,8 @@ body {
   display: none;
 }
 
-.lefbocon-wracon-text input:checked ~ .checked {
-  display: inline;
-}
-
-.lefbocon-wracon-text input:checked ~ .unchecked {
-  display: none;
-}
-
 .checked {
-  display: none;
+  display: inline;
 }
 
 .lefbocon-wracon-text span {
@@ -393,7 +385,7 @@ body {
   font-weight: 400;
 }
 
-.lefbocon-wracon-text input:checked ~ span {
+.lefbocon-wracon-through {
   text-decoration: line-through;
   text-decoration-color: red;
   animation: strike 0.5s linear;

@@ -13,7 +13,6 @@ import { useState } from "react";
 
 export default function App() {
   const [items, setItems] = useState([]);
-  const numItems = items.length;
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
@@ -29,6 +28,38 @@ export default function App() {
         item.id === id ? { ...item, packed: !item.packed } : item
       )
     );
+  }
+
+  function handleOrderItems() {
+    setItems((prevItems) => [...prevItems].sort((a, b) => a.id - b.id));
+  }
+
+  function handleSortItems() {
+    setItems((prevItems) =>
+      [...prevItems].sort((a, b) => a.description.localeCompare(b.description))
+    );
+  }
+
+  function handlePackedItems() {
+    setItems((prevItems) =>
+      [...prevItems].sort((a, b) => {
+        if (a.packed && !b.packed) {
+          return 1;
+        }
+        if (!a.packed && b.packed) {
+          return -1;
+        }
+        return a.description.localeCompare(b.description);
+      })
+    );
+  }
+
+  function handleClearList() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items?"
+    );
+
+    if (confirmed) setItems([]);
   }
 
   return (
@@ -78,7 +109,13 @@ export default function App() {
             </div>
           </div>
           <div className="right-wrapper animated-opacity">
-            <RightSort items={items} />
+            <RightSort
+              items={items}
+              onSortAItems={handleOrderItems}
+              onSortBItems={handleSortItems}
+              onSortCItems={handlePackedItems}
+              onClearList={handleClearList}
+            />
           </div>
         </div>
       </div>
@@ -259,12 +296,22 @@ function Item({ item, onDeleteItem, onToggleItem }) {
           value={item.packed}
           onChange={() => onToggleItem(item.id)}
         />
-        <img class="unchecked" src={UnTick} alt="Uncheck" />
-        <img class="checked" src={Tick} alt="Checked" />
-        <span>
-          {item.quantity > 0 && `${item.quantity} `}
-          {item.description}
-        </span>
+        {item.packed ? (
+          <img className="checked" src={Tick} alt="Checked" />
+        ) : (
+          <img className="unchecked" src={UnTick} alt="Uncheck" />
+        )}
+        {item.packed ? (
+          <span className="lefbocon-wracon-through">
+            {item.quantity > 0 && `${item.quantity} `}
+            {item.description}
+          </span>
+        ) : (
+          <span>
+            {item.quantity > 0 && `${item.quantity} `}
+            {item.description}
+          </span>
+        )}
       </label>
       <div className="lefbocon-wracon-button">
         <button>
@@ -278,7 +325,13 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   );
 }
 
-function RightSort({ items }) {
+function RightSort({
+  items,
+  onSortAItems,
+  onSortBItems,
+  onSortCItems,
+  onClearList,
+}) {
   const numItems = items.length;
   const numPacked = items.filter((item) => item.packed).length;
   const percentage = Math.round((numPacked / numItems) * 100);
@@ -299,18 +352,30 @@ function RightSort({ items }) {
         <span className="rigwra-container-small center animated-slideright-slow">
           SORT BY :
         </span>
-        <button className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast">
+        <button
+          onClick={onSortAItems}
+          className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast"
+        >
           INPUT ORDER
         </button>
-        <button className="rigwra-conupcon-container rigwra-container-small btn-white animated-slideright-normal">
+        <button
+          onClick={onSortBItems}
+          className="rigwra-conupcon-container rigwra-container-small btn-white animated-slideright-normal"
+        >
           DESCRIPTION
         </button>
-        <button className="rigwra-conupcon-container rigwra-container-small btn-white animated-slideright-slow">
+        <button
+          onClick={onSortCItems}
+          className="rigwra-conupcon-container rigwra-container-small btn-white animated-slideright-slow"
+        >
           TICK STATUS
         </button>
       </div>
       <div className="rigwra-container-bot">
-        <button className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast">
+        <button
+          onClick={onClearList}
+          className="rigwra-conupcon-container rigwra-container-small btn-color animated-slideright-fast"
+        >
           CLEAR LIST
         </button>
       </div>
